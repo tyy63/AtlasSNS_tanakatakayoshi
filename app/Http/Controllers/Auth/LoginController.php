@@ -22,6 +22,11 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    //         // ログインへ戻る
+    // protected function loggedOut(\Illuminate\Http\Request $request)
+    // {
+    //     return redirect('/login');
+    // }
     /**
      * Where to redirect users after login.
      *
@@ -34,9 +39,10 @@ class LoginController extends Controller
      *
      * @return void
      */
+    // ログアウト→ログインへ変更
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('login');
     }
 
     public function login(Request $request){

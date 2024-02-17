@@ -42,6 +42,12 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
 
+            $validated = $request->validate([
+                'username' => ['required','min:2','max:12'],
+                'mail' => ['required','min:5','max:40', 'email','unique:users,mail'],
+                'password' => ['required','min:8','max:20','alpha_num','confirmed'],
+            ]);
+
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
@@ -51,6 +57,8 @@ class RegisterController extends Controller
                 'mail' => $mail,
                 'password' => bcrypt($password),
             ]);
+            // 〇〇さんに入る部分を呼ぶ
+            request()->session()->put('username', $username);
 
             return redirect('added');
         }
