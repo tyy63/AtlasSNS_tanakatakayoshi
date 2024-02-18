@@ -1,6 +1,4 @@
-$(function () {
-  $(".accordion").on("click", function () {
-    $(this).next().slideToggle(300);
-    $(this).toggleClass("open", 300);
-  });
+$('.menu-btn').click(function () {
+  $(this).toggleClass('is-open');
+  $(this).siblings('.menu').toggleClass('is-open');
 });

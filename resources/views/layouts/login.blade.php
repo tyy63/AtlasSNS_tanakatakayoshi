@@ -28,17 +28,18 @@
             <div id="">
                 <div id="">
                     <p>〇〇さん<img src="images/arrow.png"></p>
-                    {{-- アコーディオンメニューを作成 --}}
                 </div>
-                <div class="accordion">
-                    <p class="nav-btn">ボタン</p>
-                    <ul class="nav-menu">
-                        <li><a href="/top">ホーム</a></li>
+        {{-- アコーディオンメニューを作成 --}}
+                <button type="button" class="menu-btn">
+                    <span class="inn"></span>
+                </button>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="/top">HOME</a></li>
                         <li><a href="/profile">プロフィール編集</a></li>
                         <li><a href="/logout">ログアウト</a></li>
                     </ul>
-                </div>
-        </div>
+                </nav>
     </header>
     <div id="row">
         <div id="container">
@@ -63,7 +64,7 @@
     </div>
     <footer>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/public/js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="/js/script.js"></script>
 </body>
 </html>
