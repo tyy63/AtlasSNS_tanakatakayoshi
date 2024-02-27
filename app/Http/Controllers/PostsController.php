@@ -8,12 +8,13 @@ use App\Post;
 
 class PostsController extends Controller
 {
-    //
-    // 下記に投稿フォームを設置していく
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::orderBy('created_at','desc')->get();
+        $user= Auth::user();
+        return view('posts.index',['user'=>$user,'posts'=>$posts]);
     }
+
     public function postCreate(Request $request)
     {
         $validator = $request->validate(['post' => ['required', 'string','min:1', 'max:280'],

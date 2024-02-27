@@ -27,7 +27,7 @@
         <h1><a href="/top"><img src="images/atlas.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
+                    <p>〇〇さん<img src="{{asset('images/'.Auth::user()->images)}}"></p>
                 </div>
         {{-- アコーディオンメニューを作成 --}}
                 <button type="button" class="menu-btn">
