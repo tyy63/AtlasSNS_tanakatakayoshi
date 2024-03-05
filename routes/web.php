@@ -41,3 +41,13 @@ Route::get('/profile','UsersController@profile')->middleware('auth');
 Route::get('/search','UsersController@search')->middleware('auth');
 Route::get('/followList','FollowsController@followList',)->middleware('auth');
 Route::get('/followerList','FollowsController@followerList',)->middleware('auth');
+
+
+// 投稿作成
+Route::post('/post', 'PostsController@postCreate')->middleware('auth');
+
+// // Update用
+Route::get('/post{id}/postUpdate','PostsController@postUpdate')->middleware('auth');
+
+// delete用
+Route::get('/post/{id}/delete', 'PostsController@delete')->middleware('auth');

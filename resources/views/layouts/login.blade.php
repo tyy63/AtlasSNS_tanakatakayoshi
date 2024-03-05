@@ -24,10 +24,10 @@
     <header>
         <div id = "head">
             {{-- ロゴからトップページへのリンクを記載 --}}
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+        <h1><a href="/top"><img src="images/atlas.png"class="logo-image"></a></h1>
             <div id="">
                 <div id="">
-                    <p>〇〇さん<img src="{{asset('images/'.Auth::user()->images)}}"></p>
+                    <p class="icon">〇〇さん<img src="{{asset('images/'.Auth::user()->images)}}" class="login-image"></p>
                 </div>
         {{-- アコーディオンメニューを作成 --}}
                 <button type="button" class="menu-btn">
