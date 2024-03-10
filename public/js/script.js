@@ -6,22 +6,7 @@ $('.menu-btn').click(function () {
 
 
 
-// $(function () {
-//   const modal = $('.modal_content');
-//   const overlay = $('.modal_overlay');
-//   //「ボタン」をクリックしたらモーダルを表示
-//   $('.modal_open').on('click', function () {
-//     modal.addClass("open");
-//     overlay.addClass("open");
-//   });
-//   // 「ボタン」をクリックしたらモーダルを非表示
-//   $('.modal_delete').on('click', function () {
-//     modal.removeClass("open");
-//     overlay.removeClass("open");
-//   });
-// });
-
-
+// 投稿モーダル
 $(function () {
   // 変数に要素を入れる
   var open = $('.modal-open'),
@@ -31,6 +16,10 @@ $(function () {
   //開くボタンをクリックしたらモーダルを表示する
   open.on('click', function () {
     container.addClass('active');
+    var post = $(this).after('post');
+    var id = $(this).after('id');
+    $('.post').text(post);
+    $('.id').val(id);
     return false;
   });
 

@@ -44,7 +44,9 @@
 
                     {{-- ログインユーザーのみ編集・削除ボタンが付くようにする --}}
                 @if (Auth()->user()->id == $post->user_id);
-                    <td><bottan class="modal-open"><img src="/images/edit.png" class="button-image" alt="編集"></bottan></td>
+                    <form action=""method="POST">
+                    <td><buttan class="modal-open" ><img src="/images/edit.png" class="button-image" alt="編集"></buttan></td>
+                    </form>
                     <td><a class="" href="post/{{$post->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="/images/trash.png" class="delete-image" alt="削除"></a></td>
                 @endif
 
@@ -54,8 +56,9 @@
                             <div class="modal-body">
                                 <div class="modal-content">
                                     {!! Form::open(['url' => '/post']) !!}
-                                    {{ Form::hidden('post', $post->'post') }}
-                                    {{ Form::text('text', 'postUpdate', ['required', => 'class' => 'form-control']) }}
+                                    {{ Form::hidden('post', $post->post) }}
+                                    {{ Form::hidden('post', $post->id) }}
+                                    {{ Form::text('text', $post->post, ['required', 'class' => 'form-control']) }}
                                     <a class="modal-open" href=""><img src="/images/edit.png" class="button-image" alt="編集"></a>
                                     @csrf
                                     {!! Form::close() !!}
