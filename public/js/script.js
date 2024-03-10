@@ -4,8 +4,6 @@ $('.menu-btn').click(function () {
 });
 
 
-console.log(post);
-console.log(id);
 
 // 投稿モーダル
 $(function () {

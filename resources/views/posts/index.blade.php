@@ -44,9 +44,7 @@
 
                     {{-- ログインユーザーのみ編集・削除ボタンが付くようにする --}}
                 @if (Auth()->user()->id == $post->user_id);
-                    <td>
-                                <button class="modal-open" data-post="{{ $post->post }}"
-                            data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button>
+                    <td><button class="modal-open" data-post="{{ $post->post }}"data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button>
                             </td>
 
                     {{-- 削除ボタン --}}
@@ -58,13 +56,27 @@
                     <div class="modal-container">
                         <div class="modal-body">
                             <div class="modal-content">
-                                {!! Form::open(['url' => '/post']) !!}
-                                {{ Form::hidden('post', $post->id) }}
-                                {{ Form::text('text', '', ['required', 'class' => 'form-control modal-input-post']) }}
-                                <button type="submit"><img src="/images/edit.png" class="button-image"
-                                alt="更新"></button>
+
+
+                                {{-- {!! Form::open(['url' => 'post/{{$post->id}}/postUpdate']) !!} --}}
+
+                                <form action="{{ url('/post/' . $post->id . '/postUpdate') }}" method="POST">
                                 @csrf
+
+
+                                {{-- {{ Form::hidden('post', $post->id) }} --}}
+                                <input class="modal-input-id" type="hidden" name="post_id" value="">
+
+                                {{-- {{ Form::text('text', '', ['required', 'class' => 'form-control modal-input-post']) }} --}}
+                                <input class="modal-input-post" type="text" name="post" value="" required class="form-control modal-input-post">
+
+
+                                {{-- <a href="{{ url('/post/' . $post->id . '/postUpdate') }}"><img src="/images/edit.png"class="button-image" alt="更新"></a> --}}
+                                <button type="submit">
+                                <img src="/images/edit.png" class="button-image" alt="更新">
+                                </button>
                                 {!! Form::close() !!}
+                                </form>
                                 </div>
                             </div>
                         </div>

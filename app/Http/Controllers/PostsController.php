@@ -34,18 +34,22 @@ class PostsController extends Controller
     // 編集用
         public function postUpdate(Request $request)
     {
-        dd($request);
+        // dd($request);
+
+
+        $validator = $request->validate([
+        'post' => ['required', 'string', 'max:5'],
+        ]);
         // $validator = Validator::make($data, [
-        //     'text' => ['required', 'string', 'max:150']
+        // 'post' => ['required', 'string', 'max:150']
         // ]);
 
-        // $Post_update = $request->input('post',)
-        // $id = $request->input('id',)
+        $Post_update = $request->input('post');
+        $id = $request->input('post_id');
 
-        // Post::where('id',$id)->update([
-        //     'post' => $post_update
-        // ]);
-
+        Post::where('id',$id)->update([
+        'post' => $Post_update
+        ]);
         return redirect('/top');
     }
 

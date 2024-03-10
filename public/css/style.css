@@ -126,12 +126,15 @@ header {
 
 /* 削除ボタンのホバー */
 .delete-image {
+    background-size: contain;
     width: 30px;
     height: 30px;
 }
 
 .delete-image:hover {
     background: url("/images/trash-h.png");
+    background-size: contain;
+    transition: 0s
 }
 
 /*モーダル本体の指定 + モーダル外側の背景の指定*/
