@@ -44,24 +44,27 @@
 
                     {{-- ログインユーザーのみ編集・削除ボタンが付くようにする --}}
                 @if (Auth()->user()->id == $post->user_id);
-                    <form action=""method="POST">
-                    <td><buttan class="modal-open" ><img src="/images/edit.png" class="button-image" alt="編集"></buttan></td>
-                    </form>
+                    <td>
+                                <button class="modal-open" data-post="{{ $post->post }}"
+                            data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button>
+                            </td>
+
+                    {{-- 削除ボタン --}}
                     <td><a class="" href="post/{{$post->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="/images/trash.png" class="delete-image" alt="削除"></a></td>
                 @endif
 
 
                     {{-- モーダルの部分 --}}
-                        <div class="modal-container">
-                            <div class="modal-body">
-                                <div class="modal-content">
-                                    {!! Form::open(['url' => '/post']) !!}
-                                    {{ Form::hidden('post', $post->post) }}
-                                    {{ Form::hidden('post', $post->id) }}
-                                    {{ Form::text('text', $post->post, ['required', 'class' => 'form-control']) }}
-                                    <a class="modal-open" href=""><img src="/images/edit.png" class="button-image" alt="編集"></a>
-                                    @csrf
-                                    {!! Form::close() !!}
+                    <div class="modal-container">
+                        <div class="modal-body">
+                            <div class="modal-content">
+                                {!! Form::open(['url' => '/post']) !!}
+                                {{ Form::hidden('post', $post->id) }}
+                                {{ Form::text('text', '', ['required', 'class' => 'form-control modal-input-post']) }}
+                                <button type="submit"><img src="/images/edit.png" class="button-image"
+                                alt="更新"></button>
+                                @csrf
+                                {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>

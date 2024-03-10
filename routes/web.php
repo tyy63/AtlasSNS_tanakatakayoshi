@@ -46,8 +46,8 @@ Route::get('/followerList','FollowsController@followerList',)->middleware('auth'
 // 投稿作成
 Route::post('/post', 'PostsController@postCreate')->middleware('auth');
 
-// // Update用
-Route::get('/post{id}/postUpdate','PostsController@postUpdate')->middleware('auth');
+// // 投稿更新用
+Route::get('/post/{id}/postUpdate','PostsController@postUpdate')->middleware('auth');
 
 // delete用
 Route::get('/post/{id}/delete', 'PostsController@delete')->middleware('auth');

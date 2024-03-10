@@ -4,7 +4,8 @@ $('.menu-btn').click(function () {
 });
 
 
-
+console.log(post);
+console.log(id);
 
 // 投稿モーダル
 $(function () {
@@ -16,10 +17,12 @@ $(function () {
   //開くボタンをクリックしたらモーダルを表示する
   open.on('click', function () {
     container.addClass('active');
-    var post = $(this).after('post');
-    var id = $(this).after('id');
-    $('.post').text(post);
-    $('.id').val(id);
+    var post = $(this).data('post');
+    var id = $(this).data('id');
+
+    $('.modal-input-post').val(post);
+    $('.modal-input-id').val(id);
+
     return false;
   });
 
