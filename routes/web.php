@@ -36,18 +36,21 @@ Route::post('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 // kernelにあるrouteMiddlewareのauthを利用
 // コントローラーとメソッドを変更
-Route::get('/top','PostsController@index')->middleware('auth');
-Route::get('/profile','UsersController@profile')->middleware('auth');
-Route::get('/search','UsersController@search')->middleware('auth');
-Route::get('/followList','FollowsController@followList',)->middleware('auth');
-Route::get('/followerList','FollowsController@followerList',)->middleware('auth');
+Route::get('/top', 'PostsController@index')->middleware('auth');
+Route::get('/profile', 'UsersController@profile')->middleware('auth');
+Route::get('/search', 'UsersController@search')->middleware('auth');
+Route::get('/followList', 'FollowsController@followList',)->middleware('auth');
+Route::get('/followerList', 'FollowsController@followerList',)->middleware('auth');
 
 
 // 投稿作成
 Route::post('/post', 'PostsController@postCreate')->middleware('auth');
 
 // // 投稿更新用
-Route::get('/post/{id}/postUpdate','PostsController@postUpdate')->middleware('auth');
+Route::post('/post/{id}/postUpdate', 'PostsController@postUpdate')->middleware('auth');
 
 // delete用
 Route::get('/post/{id}/delete', 'PostsController@delete')->middleware('auth');
+
+// 検索用
+Route::post('/search', 'UsersController@userSearch')->middleware('auth');

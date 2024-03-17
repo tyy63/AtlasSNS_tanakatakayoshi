@@ -27,7 +27,7 @@
         <h1><a href="/top"><img src="images/atlas.png"class="logo-image"></a></h1>
             <div id="">
                 <div id="">
-                    <p class="icon">〇〇さん<img src="{{asset('images/'.Auth::user()->images)}}" class="login-image"></p>
+                    <p class="icon">{{ Auth::user()->username }}さん<img src="{{asset('images/'.Auth::user()->images)}}" class="login-image"></p>
                 </div>
         {{-- アコーディオンメニューを作成 --}}
                 <button type="button" class="menu-btn">
@@ -47,7 +47,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p>{{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>

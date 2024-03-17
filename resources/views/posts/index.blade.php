@@ -12,7 +12,8 @@
 </head>
 <body>
 <!-- フォームエリア -->
-    <div style="display: flex; align-items: center;">
+    {{-- <div style="display: flex; align-items: center;"> --}}
+    <div class="flexbox">
             <div>
                 @if(Auth::check())
                     <!-- ログイン中のユーザーの画像を表示 -->
@@ -32,18 +33,18 @@
                     </div>
             </div>
 
-
+    <table>
         @foreach($posts as $post)
             <tr>
                 {{-- 投稿一覧表示に対して  --}}
                     <td><img src="{{asset('images/'.Auth::user()->images)}}"  class="login-image"></td>
-                    <td>{{$post ->user_id}}</td>
+                    <td>{{$post ->user->username}}</td>
                     <td>{{$post ->post}}</td>
                     <td>{{$post ->created_at}}</td>
 
 
                     {{-- ログインユーザーのみ編集・削除ボタンが付くようにする --}}
-                @if (Auth()->user()->id == $post->user_id);
+                @if (Auth()->user()->id == $post->user_id)
                     <td><button class="modal-open" data-post="{{ $post->post }}"data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button>
                             </td>
 
@@ -80,9 +81,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
             </tr>
         @endforeach
-    </div>
+    </table>
+
 </body>
 </html>
 
