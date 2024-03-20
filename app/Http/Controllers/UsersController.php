@@ -30,4 +30,22 @@ class UsersController extends Controller
         }
         return view('users.search', ['users' => $users,'keyword'=>$keyword]);
     }
+
+
+
+// フォロー機能
+    public function follow(User $user)
+    {
+        Auth::user()->follow($user->id);
+        return back();
+    }
+
+// フォロー解除機能
+
+    public function unfollow(User $user)
+    {
+        Auth::user()->unfollow($user->id);
+        return back();
+    }
+
 }

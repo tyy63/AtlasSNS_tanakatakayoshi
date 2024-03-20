@@ -13,7 +13,7 @@ class PostsController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
         $user = Auth::user();
-        dd($posts,$user);
+        // dd($posts,$user);
         return view('posts.index', ['user' => $user, 'posts' => $posts]);
     }
 

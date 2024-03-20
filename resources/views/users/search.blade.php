@@ -22,11 +22,42 @@
             @if ($user->id !== Auth::user()->id)
             <tr>
               <td><img src="{{asset('images/'.Auth::user()->images)}}" class="login-image"></td>
-              <td>{{$user->username}}</td>
+              <td>{{$user=>'username'}}</td>
+              {{-- フォローボタンと解除ボタンの設置 --}}
+              <form method="POST" action="{{route('follow',['user'=>$user->id])}}">@csrf</form>
+
+              <td><button type="submit">フォローする</button></td>
+              @endif
+
+
+
+                {{-- @if($user->username_followed)
+                  フォロー解除
+                @else
+                  フォローする
+                @endif
+              </button> --}}
+              {{-- @endif --}}
             </tr>
-            @endif
           @endforeach
         </table>
+
+
+{{-- フォロー・解除のボタン設置 --}}
+{{-- <td>
+  @if (auth()->user()->isFollowing($user->id))
+    <form action="{{route('unfollow',$user->id)}}"method="post">
+        @csrf
+    <button type="button" class="btn btn-danger">フォロー解除</button>
+    </form>
+  @else
+    <form action="{{route('follow',$user->id)}}"method="post"></form>
+        @csrf
+    <button type="button" class="btn btn-primary">フォローする</button>
+  @endif
+</td> --}}
+
+
 
 
 
