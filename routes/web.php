@@ -56,7 +56,7 @@ Route::get('/post/{id}/delete', 'PostsController@delete')->middleware('auth');
 Route::post('/search', 'UsersController@userSearch')->middleware('auth');
 
 // フォロー機能
-Route::post('/post/{user}search','UserController@follow')->name('attach');
+Route::post('/post/{user}/search','UsersController@follow')->middleware('auth')->name('attach');
 
 // フォロー解除機能
-Route::post('/post/{user}search','UserController@unfollow')->middleware('auth');
+Route::post('/post/{user}search','UsersController@unfollow')->middleware('auth')->name('detach');

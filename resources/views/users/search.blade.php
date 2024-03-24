@@ -15,52 +15,28 @@
             <p>検索ワード：{{$keyword}}</p>
           @endif
 
-          {{-- アイコンとユーザー名を表示する --}}
 
+          {{-- アイコンとユーザー名を表示する --}}
         <table>
           @foreach($users as $user)
             @if ($user->id !== Auth::user()->id)
-            <tr>
-              <td><img src ="{{asset('images/'.Auth::user()->images)}}" class="login-image"></td>
-              <td>{{$user ->username}}</td>
-              {{-- フォローボタンと解除ボタンの設置 --}}
+              <tr>
+                    <td><img src ="{{asset('images/'.Auth::user()->images)}}" class="login-image"></td>
+                    <td>{{$user ->username}}</td>
 
-              <form method ="POST" action="{{route('attach',['user'=>$user->id])}}">@csrf
+                    {{-- フォローボタンと解除ボタンの設置 --}}
 
-                <td><button type="submit">フォローする</button></td>
-              </form>
-              @endif
+                @if (auth()->user()->isFollowing($user->id))
+                    <form method ="POST" action="{{route('detach',['user'=>$user->id])}}">@csrf
+                      <td><button type="submit">フォロー解除</button></td>
+                    </form>
+                @else
+                    <form method ="POST" action="{{route('attach',['user'=>$user->id])}}">@csrf
+                      <td><button type="submit">フォローする</button></td>
+                    </form>
+                @endif
             </tr>
+          @endif
           @endforeach
         </table>
-
-                {{-- @if($user->username_followed)
-                  フォロー解除
-                @else
-                  フォローする
-                @endif
-              </button> --}}
-              {{-- @endif --}}
-
-
-
-
-{{-- フォロー・解除のボタン設置 --}}
-{{-- <td>
-  @if (auth()->user()->isFollowing($user->id))
-    <form action="{{route('unfollow',$user->id)}}"method="post">
-        @csrf
-    <button type="button" class="btn btn-danger">フォロー解除</button>
-    </form>
-  @else
-    <form action="{{route('follow',$user->id)}}"method="post"></form>
-        @csrf
-    <button type="button" class="btn btn-primary">フォローする</button>
-  @endif
-</td> --}}
-
-
-
-
-
 @endsection

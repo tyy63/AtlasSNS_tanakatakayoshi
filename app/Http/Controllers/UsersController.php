@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\Auth;
+use App\Post;
 
 
 class UsersController extends Controller
@@ -47,5 +49,6 @@ class UsersController extends Controller
         Auth::user()->unfollow($user->id);
         return back();
     }
+
 
 }
