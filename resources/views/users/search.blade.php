@@ -21,15 +21,18 @@
           @foreach($users as $user)
             @if ($user->id !== Auth::user()->id)
             <tr>
-              <td><img src="{{asset('images/'.Auth::user()->images)}}" class="login-image"></td>
-              <td>{{$user=>'username'}}</td>
+              <td><img src ="{{asset('images/'.Auth::user()->images)}}" class="login-image"></td>
+              <td>{{$user ->username}}</td>
               {{-- フォローボタンと解除ボタンの設置 --}}
-              <form method="POST" action="{{route('follow',['user'=>$user->id])}}">@csrf</form>
 
-              <td><button type="submit">フォローする</button></td>
+              <form method ="POST" action="{{route('attach',['user'=>$user->id])}}">@csrf
+
+                <td><button type="submit">フォローする</button></td>
+              </form>
               @endif
-
-
+            </tr>
+          @endforeach
+        </table>
 
                 {{-- @if($user->username_followed)
                   フォロー解除
@@ -38,9 +41,8 @@
                 @endif
               </button> --}}
               {{-- @endif --}}
-            </tr>
-          @endforeach
-        </table>
+
+
 
 
 {{-- フォロー・解除のボタン設置 --}}
