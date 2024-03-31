@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\User;
+use App\Follow;
 
 // リレーションをする
 
@@ -18,7 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable =
         [
-            'username', 'mail', 'password',
+        'username', 'mail', 'password',
         ];
 
     /**
@@ -28,7 +30,7 @@ class User extends Authenticatable
      */
     protected $hidden =
         [
-            'password', 'remember_token',
+        'password', 'remember_token',
         ];
 
         public function posts()
@@ -54,19 +56,19 @@ class User extends Authenticatable
         }
 
 
-
 // フォロー解除機能
         public function unfollow(Int $user_id)
         {
         return $this->followed()->detach($user_id);
         }
 
-// フォローしているかの判断
 
+// フォローしているかの判断
         public function isFollowing(Int $user_id)
         {
         return $this->followed()->where('followed_id',$user_id)->exists();
         }
+
 
 
 

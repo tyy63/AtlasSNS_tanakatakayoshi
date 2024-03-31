@@ -24,8 +24,7 @@
                     <td><img src ="{{asset('images/'.Auth::user()->images)}}" class="login-image"></td>
                     <td>{{$user ->username}}</td>
 
-                    {{-- フォローボタンと解除ボタンの設置 --}}
-
+          {{-- フォローボタンと解除ボタンの設置 --}}
                 @if (auth()->user()->isFollowing($user->id))
                     <form method ="POST" action="{{route('detach',['user'=>$user->id])}}">@csrf
                       <td><button type="submit">フォロー解除</button></td>

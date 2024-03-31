@@ -32,11 +32,11 @@
                         {!! Form::close() !!}
                     </div>
             </div>
-
     <table>
         @foreach($posts as $post)
             <tr>
-                {{-- 投稿一覧表示に対して  --}}
+
+                {{-- 投稿一覧を表示　アイコン　ユーザー名等  --}}
                     <td><img src="{{asset('images/'.Auth::user()->images)}}"  class="login-image"></td>
                     <td>{{$post ->user->username}}</td>
                     <td>{{$post ->post}}</td>
@@ -45,8 +45,7 @@
 
                     {{-- ログインユーザーのみ編集・削除ボタンが付くようにする --}}
                 @if (Auth()->user()->id == $post->user_id)
-                    <td><button class="modal-open" data-post="{{ $post->post }}"data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button>
-                            </td>
+                    <td><button class="modal-open" data-post="{{ $post->post }}"data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button></td>
 
                     {{-- 削除ボタン --}}
                     <td><a class="" href="post/{{$post->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="/images/trash.png" class="delete-image" alt="削除"></a></td>
@@ -58,21 +57,10 @@
                         <div class="modal-body">
                             <div class="modal-content">
 
-
-                                {{-- {!! Form::open(['url' => 'post/{{$post->id}}/postUpdate']) !!} --}}
-
                                 <form action="{{ url('/post/' . $post->id . '/postUpdate') }}" method="POST">
                                 @csrf
-
-
-                                {{-- {{ Form::hidden('post', $post->id) }} --}}
                                 <input class="modal-input-id" type="hidden" name="post_id" value="">
-
-                                {{-- {{ Form::text('text', '', ['required', 'class' => 'form-control modal-input-post']) }} --}}
                                 <input class="modal-input-post" type="text" name="post" value="" required class="form-control modal-input-post">
-
-
-                                {{-- <a href="{{ url('/post/' . $post->id . '/postUpdate') }}"><img src="/images/edit.png"class="button-image" alt="更新"></a> --}}
                                 <button type="submit">
                                 <img src="/images/edit.png" class="button-image" alt="更新">
                                 </button>

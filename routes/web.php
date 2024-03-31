@@ -39,8 +39,8 @@ Route::post('/added', 'Auth\RegisterController@added');
 Route::get('/top', 'PostsController@index')->middleware('auth');
 Route::get('/profile', 'UsersController@profile')->middleware('auth');
 Route::get('/search', 'UsersController@search')->middleware('auth');
-Route::get('/followList', 'FollowsController@followList',)->middleware('auth');
-Route::get('/followerList', 'FollowsController@followerList',)->middleware('auth');
+Route::get('/followList', 'FollowsController@followList')->middleware('auth');
+Route::get('/followerList', 'FollowsController@followerList')->middleware('auth');
 
 
 // 投稿作成
@@ -60,3 +60,16 @@ Route::post('/post/{user}/search','UsersController@follow')->middleware('auth')-
 
 // フォロー解除機能
 Route::post('/post/{user}search','UsersController@unfollow')->middleware('auth')->name('detach');
+
+
+
+
+
+// アイコン先のプロフィール画面
+Route::get('/profile/{id}/otherProfile', 'UsersController@profile')->middleware('auth');
+
+// フォロー機能
+Route::post('/profile/{user}/otherProfile', 'UsersController@follow')->middleware('auth')->name('attach');
+
+// フォロー解除機能
+Route::post('/profile/{user}/otherProfile', 'UsersController@unfollow')->middleware('auth')->name('detach');
