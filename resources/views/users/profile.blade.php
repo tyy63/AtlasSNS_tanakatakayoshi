@@ -29,8 +29,4 @@
           @endforeach
 
 
-{{-- 自分のプロフィールを編集する --}}
-
-
-
 @endsection

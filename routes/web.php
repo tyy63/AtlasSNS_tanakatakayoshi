@@ -38,6 +38,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 // コントローラーとメソッドを変更
 Route::get('/top', 'PostsController@index')->middleware('auth');
 Route::get('/profile', 'UsersController@profile')->middleware('auth');
+// Route::get('/edit', 'UsersController@search')->middleware('auth');
 Route::get('/search', 'UsersController@search')->middleware('auth');
 Route::get('/followList', 'FollowsController@followList')->middleware('auth');
 Route::get('/followerList', 'FollowsController@followerList')->middleware('auth');

@@ -11,13 +11,15 @@ use App\Post;
 class UsersController extends Controller
 {
     //相手プロフィールへ画面へ移る　特定のIDを引っ張ってくる（＄id）で
-    public function profile($id){
+    public function profile($id)
+    {
     $users = user::where('id', $id)->first();
     $posts = Post::with(['user'])->where('user_id', $id)->orderBy('created_at', 'desc')->get();
     return view('users.profile',['posts' => $posts],['users' => $users]);
     }
 
-    public function search(){
+    public function search()
+    {
     $users = user::get();
     return view('users.search',['users' => $users]);
     }
