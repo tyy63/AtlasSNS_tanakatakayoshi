@@ -12,21 +12,20 @@
 {{-- フォロー・解除ボタン --}}
                 @if (auth()->user()->isFollowing($users->id))
                     <form method ="POST" action="{{route('detach',['user'=>$users->id])}}">@csrf
-                      <button type="submit">フォロー解除</button>
+                    <button type="submit">フォロー解除</button>
                     </form>
                 @else
                     <form method ="POST" action="{{route('attach',['user'=>$users->id])}}">@csrf
-                      <button type="submit">フォローする</button>
+                    <button type="submit">フォローする</button>
                     </form>
                 @endif
 
 
 {{-- 投稿を表示 --}}
-          @foreach ($posts as $post)
-          <td>{{$post ->user ->username}}</td>
-          <td>{{$post ->post}}</td>
-          <td>{{$post ->created_at}}</td>
-          @endforeach
-
+        @foreach ($posts as $post)
+        <td>{{$post ->user ->username}}</td>
+        <td>{{$post ->post}}</td>
+        <td>{{$post ->created_at}}</td>
+        @endforeach
 
 @endsection

@@ -16,6 +16,8 @@ class PostsController extends Controller
     return view('posts.index', ['user' => $user, 'posts' => $posts]);
     }
 
+
+    // 投稿作成
     public function postCreate(Request $request)
     {
     $validator = $request->validate([
@@ -40,7 +42,6 @@ class PostsController extends Controller
     $validator = $request->validate([
     'post' => ['required', 'string', 'max:5'],
     ]);
-
 
     $Post_update = $request->input('post');
     $id = $request->input('post_id');

@@ -38,7 +38,6 @@ Route::post('/added', 'Auth\RegisterController@added');
 // コントローラーとメソッドを変更
 Route::get('/top', 'PostsController@index')->middleware('auth');
 Route::get('/profile', 'UsersController@profile')->middleware('auth');
-// Route::get('/edit', 'UsersController@search')->middleware('auth');
 Route::get('/search', 'UsersController@search')->middleware('auth');
 Route::get('/followList', 'FollowsController@followList')->middleware('auth');
 Route::get('/followerList', 'FollowsController@followerList')->middleware('auth');
@@ -74,3 +73,17 @@ Route::post('/profile/{user}/otherProfile', 'UsersController@follow')->middlewar
 
 // フォロー解除機能
 Route::post('/profile/{user}/otherProfile', 'UsersController@unfollow')->middleware('auth')->name('detach');
+
+
+
+
+// // プロフィール編集画面
+Route::get('/edit', 'UsersController@edit')->middleware('auth');
+
+
+// プロフィール編集処理
+Route::post('/edit', 'UsersController@profileUpdate')->middleware('auth');
+
+
+// 画像のアップロード
+Route::post('/edit', 'UsersController@profileUpdate')->name('imageUpdate');

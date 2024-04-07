@@ -55,4 +55,46 @@ class UsersController extends Controller
 
 
 
+// プロフィール編集
+    public function edit()
+    {
+    return view('users.edit');
+    }
+
+
+
+// プロフィールの編集とバリデーションをかける
+    public function profileUpdate(Request $request)
+    {
+    // dd($request);
+    $validated = $request->validate([
+    'name_update' => ['required','min:2','max:12'],
+    'mail_update' => ['required','min:5','max:40', 'email','unique:users,mail'],
+    'password' => ['min:8','max:20','alpha_num','confirmed'],
+    'bio_update'=>['max:150'],
+    'icon'=>'image|mimes:jpeg,png,bmp,gif,svg',
+    ]);
+
+    $name_update = $request->input('name_update');
+    $mail_update = $request->input('mail_update');
+    $password_update = $request->input('password');
+    $bio_update = $request->input('bio_update');
+    $images_update = $request->input('icon');
+// dd($name_update);
+    $images_update_Path = $images_update->store('uploads','public');
+
+
+    $id = Auth::id();
+    User::where('id', $id)->update
+    ([
+    'username' => $name_update,
+    'mail' => $mail_update,
+    'password' => $password_update,
+    'bio' => $bio_update,
+
+    'images'=> $images_update,
+
+    ]);
+    return redirect('/top');
+    }
 }

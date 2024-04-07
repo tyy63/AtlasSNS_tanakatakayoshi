@@ -30,6 +30,14 @@ header {
     text-align: center;
 }
 
+
+div#clear {
+    background-color: #ccd8ff;
+    padding: 50px 0;
+}
+
+
+
 /* アコーディオンメニュー */
 .menu-btn {
     width: 60px;
