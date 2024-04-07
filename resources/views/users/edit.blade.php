@@ -16,7 +16,7 @@
     </div>
 @endif
 
-    <img src="{{asset('images/'.Auth::user()->images)}}" class="login-image">
+    <img src="{{asset('/storage'.Auth::user()->images)}}" class="login-image">
 
     <form method="POST" action="{{ route('imageUpdate') }}" enctype="multipart/form-data">
     @csrf
