@@ -13,27 +13,34 @@ use App\Post;
 
 class FollowsController extends Controller
 {
-
-
     //フォローリストページ
     public function followList()
     {
     $users = Auth::user()->followed()->pluck('followed_id');
     $followUsers = User::whereIn('id', $users)->get();
-    // dd($followUsers);
-    $posts = Post::with(['user'])->whereIn('user_id', $users)->get();
-    // dd($posts);
+
+    $posts = Post::with(['user'])
+    ->whereIn('user_id', $users)
+    ->orderBy('created_at', 'desc')
+    ->get();
+
     return view('follows.followList',compact('followUsers','posts'));
     }
+
+
 
 
     // フォローワーリストページ
     public function followerList(){
     $users = Auth::user()->following()->pluck('following_id');
     $followUsers = User::whereIn('id', $users)->get();
-    // dd($followUsers);
-    $posts = Post::with(['user'])->whereIn('user_id', $users)->get();
-        return view('follows.followerList',compact('followUsers','posts'));
+
+    $posts = Post::with(['user'])
+    ->whereIn('user_id', $users)
+    ->orderBy('created_at', 'desc')
+    ->get();
+
+    return view('follows.followerList',compact('followUsers','posts'));
     }
 
 

@@ -4,9 +4,13 @@ html {}
 
 body {}
 
-/* header */
-header {
+
+.hed {
     background: #186AC9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px 10px 15px;
 }
 
 /* main content */
@@ -21,13 +25,21 @@ header {
 
 #side-bar {
     flex: 0 0 19%;
+    font-size: 15px;
     border-left: 1px solid #727272;
+    min-height: 100vh;
 }
 
-.flexbox {
+/* .flexbox {
     display: flex;
     flex-direction: column;
     text-align: center;
+} */
+
+
+div#clear {
+    background-color: #ccd8ff;
+    padding: 50px 0;
 }
 
 
@@ -38,25 +50,167 @@ div#clear {
 
 
 
+
+
+
+
+
+
+
+/* 投稿一覧のレイアウト作成　新 */
+
+
+.new-post {
+    border-bottom: 4px solid #C0C0C0;
+}
+
+.post-create {
+    padding: 25px 100px 50px 30px;
+    margin: 10px 100px 10px 100px;
+    display: flex;
+    align-items: center;
+}
+
+
+/* 自分のプロフィールのレイアウト */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="textarea"] {
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 8%;
+    background-color: #dcdcdc;
+}
+
+input[type="text"].no-border {
+    width: 1000px;
+    height: 100px;
+    border: none;
+    margin-bottom: 0;
+    background-color: #fff;
+}
+
+input[type="textarea"].modal-input-post {
+    background-color: #fff;
+}
+
+
+/* 投稿一覧の部分 */
+
+.post-all {
+    padding: 20px 50px 10px 200px;
+    border-bottom: 1px solid #000;
+    font-size: 15px;
+}
+
+li {
+    /* list-style: none;
+    display: flex; */
+}
+
+.post-content {
+    justify-content: space-between;
+}
+
+/* .post-content>div {
+    display: flex;
+} */
+
+.post-name {
+    margin-bottom: 10px;
+}
+
+
+/* レイアウト編集　ログイン後 */
+
+
+
+
+
+#confirm {
+    border-bottom: 1px solid #000;
+}
+
+.name {
+    color: #fff;
+    font-size: 25px;
+}
+
+li {
+    list-style: none;
+    display: flex;
+}
+
+.post-content {
+    width: 100%;
+    padding: 15px;
+}
+
+.post-content>div {
+    display: flex;
+    justify-content: space-between;
+    /* margin: 0 0 0 auto; */
+}
+
+.post-name {
+    margin-bottom: 10px;
+}
+
+.follow {
+    width: 500px;
+    flex-wrap: wrap;
+}
+
+
+.user-profile {
+    padding: 35px 200px 40px 150px;
+    height: 120px;
+    border-bottom: 4px solid #C0C0C0;
+    display: flex;
+}
+
+.other-profile {
+    padding: 35px 200px 40px 150px;
+    height: 120px;
+    border-bottom: 4px solid #C0C0C0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-title {
+    font-size: 30px;
+    padding-right: 30px;
+}
+
+
+.side {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
 /* アコーディオンメニュー */
 .menu-btn {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    background-color: #fff;
-    outline: initial;
+    width: 30px;
+    height: 2px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
 
     &:focus-visible {
-        box-shadow: 0 0 0 2px blue;
+        box-shadow: 0 0 0 0px blue;
     }
 
     .inn {
         position: relative;
         width: 100%;
         height: 100%;
-        display: block;
+        color: #fff;
+
 
         &:before {
             position: absolute;
@@ -66,8 +220,8 @@ div#clear {
             width: 15px;
             height: 15px;
             transform: translate(-50%, -40%) rotate(135deg);
-            border-top: 1px solid #000;
-            border-right: 1px solid #000;
+            border-top: 1px solid #fff;
+            border-right: 1px solid #fff;
             transition: 0.3s ease;
         }
     }
@@ -82,15 +236,19 @@ div#clear {
     }
 }
 
+
+/* アコーディオンメニュー編集 */
 .menu {
     position: absolute;
     top: 60px;
-    width: 100%;
+    width: 200px;
+    right: 0;
     background-color: #fff;
     opacity: 0;
     transition: .3s ease-in-out;
     pointer-events: none;
-    transform: translateY(-30px);
+    transform: translateY(-60px);
+
 
     ul {
         border-bottom: 1px solid #000;
@@ -104,6 +262,26 @@ div#clear {
         }
     }
 }
+
+.menu li {
+    padding: 10px;
+    transition: background-color .3s ease-in-out;
+    color: #fff;
+
+}
+
+.menu:hover {
+    opacity: 1;
+}
+
+.menu li:hover {
+    background-color: #191970;
+}
+
+.menu li a:hover {
+    color: #fff;
+}
+
 
 .menu.is-open {
     opacity: 1;
@@ -123,26 +301,63 @@ div#clear {
 }
 
 /* アイコンサイズ */
+
+.create-image {
+    width: 55px;
+    height: 55px;
+    margin-bottom: auto;
+}
+
+
 .login-image {
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
 }
 
 .icon {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    margin: 20px 20px 20px 20px;
+    color: #fff;
 }
 
 /* ボタンサイズ */
 .button-image {
     width: 30px;
     height: 30px;
+    background-color: transparent;
+    border: none;
 }
+
+.submit {
+    background-color: transparent;
+    border: none;
+}
+
+.button-submit {
+    width: 30px;
+    height: 30px;
+    padding-bottom: 0px;
+    background-color: transparent;
+    border: none;
+}
+
+.button-set {
+    margin: 0 0 0 auto;
+    display: flex;
+}
+
 
 /* 削除ボタンのホバー */
 .delete-image {
+    background: url("/images/trash.png");
     background-size: contain;
     width: 30px;
     height: 30px;
+    display: block;
+    margin-left: 10px;
+    border-radius: 3px;
+
 }
 
 .delete-image:hover {
@@ -160,13 +375,13 @@ div#clear {
     width: 100%;
     height: 100%;
     text-align: center;
-    background: rgba(0, 0, 0, 50%);
+    background: rgba(58, 50, 50, 0.5);
     padding: 40px 20px;
     overflow: auto;
-    opacity: 0;
+
     visibility: hidden;
-    transition: .3s;
-    box-sizing: border-box;
+
+
 }
 
 /*モーダル本体の擬似要素の指定*/
@@ -178,13 +393,15 @@ div#clear {
 }
 
 .modal-open {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
 }
 
 /*モーダル本体に「active」クラス付与した時のスタイル*/
 .modal-container.active {
-    opacity: 1;
+
     visibility: visible;
 }
 
@@ -192,9 +409,9 @@ div#clear {
 .modal-body {
     position: relative;
     display: inline-block;
-    vertical-align: middle;
-    max-width: 500px;
-    width: 90%;
+    width: 850px;
+    height: 300px;
+    opacity: 1;
 }
 
 /*モーダルを閉じるボタンの指定*/
@@ -212,8 +429,174 @@ div#clear {
     cursor: pointer;
 }
 
-モーダル内のコンテンツの指定 .modal-content {
+/* モーダル内のコンテンツの指定 */
+.modal-content {
+    /* opacity: 1; */
     background: #fff;
-    text-align: left;
-    padding: 30px;
+    text-align: center;
+    height: 400px;
+    width: 850px;
+    border-radius: 10px;
+}
+
+
+input[type="textarea"].modal-input-post {
+    margin-top: 30px;
+    height: 200px;
+    width: 80%;
+    color: #000;
+}
+
+
+.modal-button-image {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.search-all {
+    display: flex;
+    align-items: center;
+    padding: 30px 200px 30px 500px;
+}
+
+
+.search-icon {
+    margin-right: 20px;
+    width: 55px;
+    height: 55px;
+}
+
+
+input[type="text"].search-box {
+    height: 30px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+
+.search-form {
+    border-bottom: 4px solid #C0C0C0;
+}
+
+
+/* 検索画面 */
+.search-enter {
+    width: 100%;
+    padding: 50px 50px 20px 20px;
+    display: flex;
+}
+
+
+.default-button {
+    margin-top: auto;
+    background-color: transparent;
+    border: none;
+}
+
+.button-a {
+    margin-top: auto;
+}
+
+.search-button-image {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+.word {
+    font-size: 20px;
+    margin-left: 200px;
+}
+
+.search-icon {
+    margin-right: 20px;
+    width: 55px;
+    height: 55px;
+}
+
+
+.search-content {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+
+/* 自分のプロフィールの編集 */
+.my-profile {
+    align-items: center;
+    padding: 3% 10% 10% 25%;
+}
+
+.profile-container {
+    display: flex;
+    width: 700px;
+    margin: 100px 100px 20px 50px;
+}
+
+.edit-profile {
+    width: 600px;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-image {
+    width: 55px;
+    height: 55px;
+    margin-top: 30px;
+    margin-right: 50px;
+
+}
+
+.edit-submit {
+    justify-content: center;
+}
+
+.fixed-width {
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 8%;
+    background-color: #dcdcdc;
+}
+
+.fixed-box {
+    width: 400px;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 8%;
+    background-color: #dcdcdc;
+}
+
+
+/* 相手ユーザーのレイアウト */
+
+
+.top-other {
+    display: flex;
+    align-items: center;
+}
+
+.other-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.padding-left-right {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+input[type="text"].form-white-background {
+    background-color: #fff;
+    width: 300px;
 }

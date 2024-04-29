@@ -2,78 +2,65 @@
 
 @section('content')
 {{-- ここに記載していく。投稿フォームと　アイコンを --}}
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<!-- フォームエリア -->
-    {{-- <div style="display: flex; align-items: center;"> --}}
-    <div class="flexbox">
-            <div>
+<!-- 新規投稿スペース -->
+    <div class="new-post">
+            <div class="post-create">
                 @if(Auth::check())
-                    <!-- ログイン中のユーザーの画像を表示 -->
-                    <img src="{{asset('images/'.Auth::user()->images)}}" class="login-image">
+                <img src="{{asset('/storage/uploads/'.Auth::user()->images)}}"class="create-image">
                 @endif
-            </div>
-            <div>
                 <!-- ここに新規作成投稿フォームを追加 -->
-                    <div class="container">
-                        {!! Form::open(['url' => '/post']) !!}
-                        <div class="form-group">
-                        {{ Form::input('text', 'post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
-                        </div>
-                        {{ csrf_field() }}
-                        <button> <img src="/images/post.png" class="button-image" alt="送信"></button>
-                        {!! Form::close() !!}
-                    </div>
+                <div>
+                    {!! Form::open(['url' => '/post' ]) !!}
+                    {{ Form::input('text', 'post', null, ['required', 'class' => 'no-border', 'placeholder' => '投稿内容を入力してください']) }}
+                    {{ csrf_field() }}
+                </div>
+                    <div class="button-a"><button class="default-button"><img src="/images/post.png" class="button-submit" alt="送信"></button></div>
+                    {!! Form::close() !!}
             </div>
-    <table>
+    </div>
+{{-- 投稿一覧スペース  --}}
         @foreach($posts as $post)
-            <tr>
-
-                {{-- 投稿一覧を表示　アイコン　ユーザー名等  --}}
-                    <td><img src="{{asset('images/'.Auth::user()->images)}}"  class="login-image"></td>
-                    <td>{{$post ->user->username}}</td>
-                    <td>{{$post ->post}}</td>
-                    <td>{{$post ->created_at}}</td>
-
+            <ul  class="post-all">
+            <li>
+            <div><img src="{{asset('/storage/uploads/'.Auth::user()->images)}}"  class="login-image"></div>
+            <div class="post-content">
+                        <div>
+                            <div class="post-name">{{$post ->user->username}}</div>
+                            {{$post ->created_at}}
+                        </div>
+                        <div>{{$post ->post}}</div>
 
                     {{-- ログインユーザーのみ編集・削除ボタンが付くようにする --}}
                 @if (Auth()->user()->id == $post->user_id)
-                    <td><button class="modal-open" data-post="{{ $post->post }}"data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button></td>
-
-                    {{-- 削除ボタン --}}
-                    <td><a class="" href="post/{{$post->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="/images/trash.png" class="delete-image" alt="削除"></a></td>
+                <div>
+                    <div class="button-set">
+                        <button class="modal-open" data-post="{{ $post->post }}"data-id="{{ $post->id }}"><img src="/images/edit.png" class="button-image"alt="編集"></button>
+                        {{-- 削除ボタン --}}
+                        <a class="delete-image" href="post/{{$post->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"></a>
+                    </div>
+                </div>
                 @endif
+            </div>
 
-
-                    {{-- モーダルの部分 --}}
-                    <div class="modal-container">
+                    {{-- 投稿編集　モーダル --}}
+                    <div class="modal-container" data-id="{{ $post->id }}">
                         <div class="modal-body">
                             <div class="modal-content">
-
                                 <form action="{{ url('/post/' . $post->id . '/postUpdate') }}" method="POST">
                                 @csrf
                                 <input class="modal-input-id" type="hidden" name="post_id" value="">
-                                <input class="modal-input-post" type="text" name="post" value="" required class="form-control modal-input-post">
-                                <button type="submit">
-                                <img src="/images/edit.png" class="button-image" alt="更新">
+                                <input class="modal-input-post" type="textarea" name="post" value="">
+                                <br>
+                                <button type="submit" class="submit">
+                                <img src="/images/edit.png" class="modal-button-image" alt="更新">
                                 </button>
                                 {!! Form::close() !!}
                                 </form>
-                                </div>
                             </div>
                         </div>
                     </div>
-            </tr>
+            </li>
+            </ul>
         @endforeach
-    </table>
-
-</body>
-</html>
 
 @endsection

@@ -38,9 +38,8 @@ class PostsController extends Controller
     // 編集用
     public function postUpdate(Request $request)
     {
-    // dd($request);
     $validator = $request->validate([
-    'post' => ['required', 'string', 'max:5'],
+    'post' => ['required', 'string', 'max:150'],
     ]);
 
     $Post_update = $request->input('post');
@@ -51,8 +50,6 @@ class PostsController extends Controller
     ]);
     return redirect('/top');
     }
-
-
 
     // 投稿削除用
     public function delete($id)

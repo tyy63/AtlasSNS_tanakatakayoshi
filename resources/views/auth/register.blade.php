@@ -4,7 +4,7 @@
 <!-- 適切なURLを入力してください -->
 {!! Form::open(['url' => '/register']) !!}
 
-<h2>新規ユーザー登録</h2>
+
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -16,23 +16,30 @@
     </div>
 @endif
 
-{{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
 
-{{ Form::label('メールアドレス') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
+<div class="container">
+    <div class="form-register">
+    <p class="font-a">新規ユーザー登録</p>
+    {{ Form::label('ユーザー名') }}
+    {{ Form::text('username',null,['class' => 'input']) }}
 
-{{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+    {{ Form::label('メールアドレス') }}
+    {{ Form::text('mail',null,['class' => 'input']) }}
 
-{{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+    {{ Form::label('パスワード') }}
+    {{ Form::password('password',null,['class' => 'input']) }}
 
-{{ Form::submit('登録') }}
+    {{ Form::label('パスワード確認') }}
+    {{ Form::password('password_confirmation',null,['class' => 'input']) }}
 
-<p><a href="/login">ログイン画面へ戻る</a></p>
+    {!! Form::submit('新規登録', ['class' => 'btn btn-danger']) !!}
 
-{!! Form::close() !!}
+
+    <p class="font-c"><a href="/login">ログイン画面へ戻る</a></p>
+
+    {!! Form::close() !!}
+    </div>
+</div>
 
 
 @endsection

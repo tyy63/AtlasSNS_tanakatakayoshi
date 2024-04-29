@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="ページの内容を表す文章" />
         <title></title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
         <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
         <!--スマホ,タブレット対応-->
@@ -21,25 +22,29 @@
         <!--OGPタグ/twitterカード-->
     </head>
 <body>
-    <header>
-        <div id = "head">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <header class="hed">
             {{-- ロゴからトップページへのリンクを記載 --}}
         <h1><a href="/top"><img src="images/atlas.png"class="logo-image"></a></h1>
-            <div id="">
-                <div id="">
-                    <p class="icon">{{ Auth::user()->username }}さん<img src="{{asset('images/'.Auth::user()->images)}}" class="login-image"></p>
-                </div>
-        {{-- アコーディオンメニューを作成 --}}
-                <button type="button" class="menu-btn">
-                    <span class="inn"></span>
-                </button>
-                <nav class="menu">
-                    <ul>
-                        <li><a href="/top">HOME</a></li>
-                        <li><a href="/edit">プロフィール編集</a></li>
-                        <li><a href="/logout">ログアウト</a></li>
+
+        <div class="icon">
+            <p class="name">{{ Auth::user()->username }}&nbsp;&nbsp;さん</p>
+
+            <button type="button" class="menu-btn">
+            <span class="inn"></span>
+            </button>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/top">HOME</a></li>
+                    <li><a href="/edit">プロフィール編集</a></li>
+                    <li><a href="/logout">ログアウト</a></li>
                     </ul>
                 </nav>
+
+            <img src="{{asset('images/'.Auth::user()->images)}}" class="login-image">
+        </div>
+
+
     </header>
     <div id="row">
         <div id="container">
@@ -47,20 +52,13 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                {{-- <a href="/profile"> --}}
-                    <p>{{ Auth::user()->username }}さんの</p></a>
-                <div>
-                    <p>フォロー数</p>
-                    <p>{{ Auth::user()->followed()->get()->count() }}名</p>
-                    </div>
-                    <p class="btn"><a href="/followList">フォローリスト</a></p>
-                    <div>
-                    <p>フォロワー数</p>
-                    <p>{{ Auth::user()->following()->get()->count() }}名</p>
-                    </div>
-                <p class="btn"><a href="followerList">フォロワーリスト</a></p>
+                    <p class="side ms-3">{{ Auth::user()->username }}さんの</p></a>
+                    <p class="side ms-3">フォロー数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ Auth::user()->followed()->get()->count() }}人</p>
+                    <p class="side text-end"><a href="/followList" class="btn btn-primary w-50">フォローリスト</a></p>
+                    <p class="side ms-3">フォロワー数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ Auth::user()->following()->get()->count() }}人</p>
+                    <p class="side text-end"><a href="followerList" class="btn btn-primary w-50">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="search">ユーザー検索</a></p>
+            <p class="side text-center mt-3"><a href="search" class="btn btn-primary px-3 w-50">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
