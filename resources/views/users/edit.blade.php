@@ -46,13 +46,10 @@
                 <div><input type="file" id="icon" name="icon" class="fixed-box"></div>
             </div>
         </div>
-
         <div class="d-flex justify-content-center">
             <button type="submit" class="edit-submit btn btn-danger padding-left-right">更新</button>
         </div>
-
     </div>
-
     </form>
 
 

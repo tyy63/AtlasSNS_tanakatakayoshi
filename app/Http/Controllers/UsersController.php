@@ -10,7 +10,7 @@ use App\Post;
 
 class UsersController extends Controller
 {
-    //相手プロフィールへ画面へ移る　特定のIDを引っ張ってくる（＄id）で
+//相手プロフィールへ画面へ移る　特定のIDを引っ張ってくる（＄id）で
     public function profile($id)
     {
     $users = user::where('id', $id)->first();
@@ -25,7 +25,7 @@ class UsersController extends Controller
     }
 
 
-    // 検索用
+// 検索用
     public function userSearch(Request $request)
     {
     $keyword = $request->input('keyword');
@@ -46,14 +46,11 @@ class UsersController extends Controller
     }
 
 // フォロー解除機能
-
     public function unfollow(User $user)
     {
     Auth::user()->unfollow($user->id);
     return back();
     }
-
-
 
 // プロフィール編集
     public function edit()
@@ -81,14 +78,12 @@ class UsersController extends Controller
     $bio_update = $request->input('bio_update');
     $images_update = $request->file('icon');
 // dd($name_update);
-    // $images_update_Path = $images_update->store('uploads');
 
 
     $images_update_Path = $request->file('icon')->store('public/uploads/');
 
 
 // パス名の指定
-
     $id = Auth::id();
     User::where('id', $id)->update
     ([

@@ -23,13 +23,12 @@
     </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
     <header class="hed">
             {{-- ロゴからトップページへのリンクを記載 --}}
-        <h1><a href="/top"><img src="images/atlas.png"class="logo-image"></a></h1>
-
+        <h1><a href="/top"><img src="{{asset('images/atlas.png')}}" class="logo-image"></a></h1>
         <div class="icon">
             <p class="name">{{ Auth::user()->username }}&nbsp;&nbsp;さん</p>
-
             <button type="button" class="menu-btn">
             <span class="inn"></span>
             </button>
@@ -40,12 +39,10 @@
                     <li><a href="/logout">ログアウト</a></li>
                     </ul>
                 </nav>
-
             <img src="{{asset('images/'.Auth::user()->images)}}" class="login-image">
         </div>
-
-
     </header>
+
     <div id="row">
         <div id="container">
             @yield('content')

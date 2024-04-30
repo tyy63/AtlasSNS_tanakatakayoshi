@@ -164,7 +164,9 @@ li {
 
 
 .user-profile {
-    padding: 35px 200px 40px 150px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    padding-left: 130px;
     height: 120px;
     border-bottom: 4px solid #C0C0C0;
     display: flex;
@@ -241,7 +243,7 @@ li {
 .menu {
     position: absolute;
     top: 60px;
-    width: 200px;
+    width: 20%;
     right: 0;
     background-color: #fff;
     opacity: 0;
@@ -284,6 +286,7 @@ li {
 
 
 .menu.is-open {
+    margin-top: 50px;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -582,6 +585,19 @@ input[type="text"].search-box {
 .top-other {
     display: flex;
     align-items: center;
+}
+
+.other-flex {
+    font-size: 20px;
+    flex-direction: column;
+    width: 300px;
+    justify-content: space-between;
+}
+
+
+.edit-button-profile {
+    margin-left: 1100px;
+    margin-top: 35px;
 }
 
 .other-container {
