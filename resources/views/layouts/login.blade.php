@@ -39,7 +39,8 @@
                     <li><a href="/logout">ログアウト</a></li>
                     </ul>
                 </nav>
-            <img src="{{asset('images/'.Auth::user()->images)}}" class="login-image">
+            {{-- <img src="{{asset('images/'.Auth::user()->images)}}" class="login-image"> --}}
+            <img src="{{asset('/storage/uploads/'.Auth::user()->images)}}" class="login-image">
         </div>
     </header>
 

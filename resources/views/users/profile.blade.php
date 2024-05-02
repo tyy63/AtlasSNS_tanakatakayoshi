@@ -9,7 +9,9 @@
 <div class="user-profile">
         <div class="top-other">
                 <div>
-                        <img src="{{asset('/storage/uploads/'.Auth::user()->images)}}" class="edit-image">
+                        {{-- <img src="{{asset('/storage/uploads/'.Auth::user()->images)}}" class="edit-image"> --}}
+                        <img src ="/storage/uploads/{{$users->images}}" class="login-image">
+
                 </div>
                 <div class="other-flex">
                         <div class="other-container">
