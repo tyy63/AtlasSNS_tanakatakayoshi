@@ -579,8 +579,7 @@ input[type="text"].search-box {
     margin-bottom: 8%;
     background-color: #dcdcdc;
     text: transparent;
-
-    /* display: none; */
+    padding-top: 35px;
 }
 
 
@@ -589,18 +588,15 @@ input[type="file"] {
     display: none;
 }
 
-/*
-height:100px;
-width:400px;
+.image-font {
+    color: #dcdcdc;
+    background-color: #fff;
+    width: 200px;
+    padding: 5px 0 5px 0;
+    margin: 0 auto;
+    text-align: center;
 
-text-align:center;
-back-ground-color:#dcdcdc; */
-
-
-
-
-
-
+}
 
 
 

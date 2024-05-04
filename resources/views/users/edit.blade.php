@@ -46,8 +46,8 @@
 
             <div class="edit-profile">
                 {{-- ここの画像　保存　アップロードをしていく。 --}}
-                <div><label for="icon">アイコン画像</label></div>
-                <div><input type="file" id="icon" name="icon"><p class="fixed-box" >aaaaaaaaaa</p></div>
+                <div><label for="">アイコン画像</label></div>
+                <div><input type="file" id="icon" name="icon"><label for="icon" class="fixed-box"><p class="image-font">ファイルを選択</p></label></div>
             </div>
 
         </div>
