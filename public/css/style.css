@@ -574,10 +574,34 @@ input[type="text"].search-box {
 .fixed-box {
     width: 400px;
     height: 100px;
+    height: 100px;
     padding: 10px;
     margin-bottom: 8%;
     background-color: #dcdcdc;
+    text: transparent;
+
+    /* display: none; */
 }
+
+
+input[type="file"] {
+    cursor: grab;
+    display: none;
+}
+
+/*
+height:100px;
+width:400px;
+
+text-align:center;
+back-ground-color:#dcdcdc; */
+
+
+
+
+
+
+
 
 
 /* 相手ユーザーのレイアウト */
@@ -597,7 +621,7 @@ input[type="text"].search-box {
 
 
 .edit-button-profile {
-    margin-left: 1100px;
+    margin-left: 550px;
     margin-top: 35px;
 }
 

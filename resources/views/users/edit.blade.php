@@ -40,11 +40,16 @@
                 <div><label for="bio">自己紹介文</label></div>
                 <div><textarea id="bio" name="bio_update"  class="fixed-width">{{ Auth::user()->bio }}</textarea></div>
             </div>
+
+
+
+
             <div class="edit-profile">
                 {{-- ここの画像　保存　アップロードをしていく。 --}}
                 <div><label for="icon">アイコン画像</label></div>
-                <div><input type="file" id="icon" name="icon" class="fixed-box"></div>
+                <div><input type="file" id="icon" name="icon"><p class="fixed-box" >aaaaaaaaaa</p></div>
             </div>
+
         </div>
         <div class="d-flex justify-content-center">
             <button type="submit" class="edit-submit btn btn-danger padding-left-right">更新</button>

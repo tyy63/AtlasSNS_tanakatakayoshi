@@ -45,7 +45,7 @@
                         <div class="modal-container" data-id="{{ $post->id }}">
                             <div class="modal-body">
                                 <div class="modal-content">
-                                    <form action="{{ url('/post' . $post->id . '/postUpdate') }}" method="POST">
+                                    <form action="{{ url('/post/' . $post->id . '/postUpdate') }}" method="POST">
                                     @csrf
                                     <input class="modal-input-id" type="hidden" name="post_id" value="">
                                     <input class="modal-input-post" type="textarea" name="post" value="">

@@ -16,6 +16,7 @@
     </div>
     {!! Form::close() !!}
       <p class="font-b"><a href="/register">新規ユーザーの方はこちら</a></p>
+
   </div>
 </div>
 @endsection

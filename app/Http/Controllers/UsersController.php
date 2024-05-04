@@ -66,7 +66,7 @@ class UsersController extends Controller
 // dd($request);
     $validated = $request->validate([
     'name_update' => ['required','min:2','max:12'],
-    'mail_update' => ['required','min:5','max:40', 'email','unique:users,mail'],
+    'mail_update' => ['sometimes', 'required', 'min:5', 'max:40', 'email', 'unique:users,mail,' . $request->user()->id],
     'password' => ['min:8','max:20','alpha_num','confirmed'],
     'bio_update'=>['max:150'],
     'icon'=>'image|mimes:jpeg,png,bmp,gif,svg',

@@ -102,8 +102,12 @@ input[type="password"] {
     font-size: 20px;
     font-family: arial;
     text-align: center;
-    color: aliceblue;
     text-decoration: underline;
+}
+
+.font-b a {
+
+    color: #fff;
 }
 
 
@@ -113,8 +117,13 @@ input[type="password"] {
     font-size: 20px;
     font-family: arial;
     text-align: center;
-    color: aliceblue;
+
     text-decoration: underline;
+}
+
+.font-c a {
+
+    color: #fff;
 }
 
 
